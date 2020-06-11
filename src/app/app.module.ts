@@ -4,15 +4,36 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ApolloModule, APOLLO_OPTIONS } from "apollo-angular";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpLinkModule, HttpLink } from "apollo-angular-link-http"
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { CountriesComponent } from './countries/countries.component'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CountriesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ApolloModule,
+    HttpLinkModule
   ],
-  providers: [],
+  providers: [{
+    provide: APOLLO_OPTIONS,
+    useFactory: (httpLink: HttpLink) => {
+      return {
+        cache: new InMemoryCache(),
+        link: httpLink.create({
+          uri: "https://cotec-server.herokuapp.com/graphql",
+        })
+      }
+    },
+    deps: [HttpLink]
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
