@@ -1,0 +1,11 @@
+<app-countries (messageEvent)="receiveMessage($event)" id="ac"></app-countries>
+<div id="statistics">
+    <div id="patientnumbers">
+        <p> Total {{ regionName }} cases</p>
+        <p id="total">{{ patientarr.length }}</p>
+        <p> Recovered </p>
+        <p id="active">{{ active }}</p>
+        <p> Deaths </p>
+        <p id="deceased">{{ deceased }}</p>
+    </div>
+</div>

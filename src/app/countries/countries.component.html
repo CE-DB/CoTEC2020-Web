@@ -1,7 +1,8 @@
-<div>
-<p>Países</p>
-<div>
-<button id="countrylist" *ngFor="let country of countryarr">
+<div id="countrylist">
+<p id="listtitle">Países</p>
+<hr id="divider">
+<div class="buttonwrapper">
+<button (click)="sendMessage()" class="button" *ngFor="let country of countryarr">
     {{ country.name }}
 </button>
 </div>

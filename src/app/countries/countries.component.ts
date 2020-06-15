@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Apollo} from "apollo-angular";
 import gql from "graphql-tag";
 import { Subscription } from 'rxjs';
@@ -20,6 +20,10 @@ export class CountriesComponent implements OnInit {
   countryarr: any[];
   private querySuscription: Subscription;
 
+  message: string = "Hello World";
+
+  @Output() messageEvent = new EventEmitter<string>();
+
   constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
@@ -30,4 +34,7 @@ export class CountriesComponent implements OnInit {
     });
   }
 
+  sendMessage() {
+    this.messageEvent.emit(this.message);
+  }
 }

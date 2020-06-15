@@ -8,12 +8,14 @@ import { ApolloModule, APOLLO_OPTIONS } from "apollo-angular";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http"
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { CountriesComponent } from './countries/countries.component'
+import { CountriesComponent } from './countries/countries.component';
+import { StatisticsComponent } from './statistics/statistics.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CountriesComponent
+    CountriesComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
