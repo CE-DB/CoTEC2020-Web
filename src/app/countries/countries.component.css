@@ -1,14 +1,30 @@
-#countrylist {
-    overflow-y: auto;
-    border-style: solid;
-    border-color: purple;
-    border-width: 2px;
-}
-
 .buttonwrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    padding: 4px;
+    border-width: 0px;
+    color: white;
+    background: linear-gradient(90deg, rgba(24,98,191,1) 0%, rgba(157,16,176,1) 52%, rgba(128,0,148,1) 100%);
+    
+}
+
+.button:active {
+    color: orange;
+}
+
+#countrylist {
+    overflow-y: auto;
+    border-style: solid;
+    border-color: purple;
+    border-width: 1px;
+    margin: 0;
+    padding: 0;
 }
 
 #listtitle {

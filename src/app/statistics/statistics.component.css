@@ -1,3 +1,19 @@
+.title {
+    text-align: center;
+    color: #05b7f2;
+}
+
+.num {
+    text-align: center;
+    color: #e38e27;
+    scale: 1.5;
+}
+
 #patientnumbers {
     display: block;
+}
+
+#maintitle {
+    color: #2bcc66;
+    text-align: center;
 }

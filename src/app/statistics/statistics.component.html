@@ -1,11 +1,13 @@
-<app-countries (messageEvent)="receiveMessage($event)" id="ac"></app-countries>
 <div id="statistics">
+    <h1 id="maintitle">Statistics</h1>
     <div id="patientnumbers">
-        <p> Total {{ regionName }} cases</p>
-        <p id="total">{{ patientarr.length }}</p>
-        <p> Recovered </p>
-        <p id="active">{{ active }}</p>
-        <p> Deaths </p>
-        <p id="deceased">{{ deceased }}</p>
+        <ng-container *ngIf="patientarr">
+            <h2 class="title"> Total {{ regionName }} cases</h2>
+            <p class="num">{{ total }}</p>
+            <h2 class="title"> Active </h2>
+            <p class="num">{{ active }}</p>
+            <h2 class="title"> Deaths </h2>
+            <p class="num">{{ deceased }}</p>
+        </ng-container>
     </div>
 </div>

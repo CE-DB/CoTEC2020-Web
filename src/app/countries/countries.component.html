@@ -1,8 +1,8 @@
 <div id="countrylist">
-<p id="listtitle">Países</p>
+<h2 id="listtitle">Países</h2>
 <hr id="divider">
 <div class="buttonwrapper">
-<button (click)="sendMessage()" class="button" *ngFor="let country of countryarr">
+<button (click)="newCountry($event)" class="button" *ngFor="let country of countryarr; let i = index" id="{{i}}">
     {{ country.name }}
 </button>
 </div>
