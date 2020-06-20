@@ -6,31 +6,25 @@
     padding: 0;
 }
 
-.button {
-    padding: 4px;
-    border-width: 0px;
-    color: white;
-    background: linear-gradient(90deg, rgba(24,98,191,1) 0%, rgba(157,16,176,1) 52%, rgba(128,0,148,1) 100%);
-    
-}
-
-.button:active {
-    color: orange;
+#anotherwrapper {
+    background: #24284f;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 #countrylist {
     overflow-y: auto;
-    border-style: solid;
-    border-color: purple;
-    border-width: 1px;
+    background: linear-gradient(90deg, rgba(24,98,191,1) 0%, rgba(157,16,176,1) 52%, rgba(128,0,148,1) 100%);
     margin: 0;
-    padding: 0;
+    padding: 1rem;
 }
 
 #listtitle {
     text-align: center;
     color: white;
-    background-color: purple;
     margin: 0;
 }
 
