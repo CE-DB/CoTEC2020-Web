@@ -1,11 +1,13 @@
 <div class="container-fluid overflow-auto" id="countrylist">
-<div class="buttonwrapper">
 <h2 id="listtitle">Países</h2>
 <hr id="divider">
+<div class="buttonwrapper" id="backdrop">
 <div id="anotherwrapper">
+    
 <button (click)="newCountry($event)" class="btn btn-outline-light" *ngFor="let country of countryarr; let i = index" id="{{i}}">
     {{ country.name }}
 </button>
+
 </div>
 </div>
 </div>

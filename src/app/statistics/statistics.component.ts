@@ -36,7 +36,7 @@ export class StatisticsComponent implements OnInit {
       query: patientinfo
     }).valueChanges.subscribe(result => {
       this.patientarr = result.data.patients;
-      this.data.changeMessage({name: "global"})
+      this.data.changeMessage({name: "Global"})
     });
 
     this.data.currentSignal.subscribe(
@@ -49,7 +49,7 @@ export class StatisticsComponent implements OnInit {
         let i = 0;
         if (this.getPatientarr() != null) {
           for (; i < this.getPatientarr().length; i++) {
-            if (this.regionName === "global" || this.regionName === this.getPatientarr()[i].nationality) {
+            if (this.regionName === "Global" || this.regionName === this.getPatientarr()[i].nationality) {
               this.total++
               if (this.patientarr[i].state == "Active") {
                 this.active++;

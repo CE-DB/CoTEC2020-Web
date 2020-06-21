@@ -1,12 +1,28 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<div class="container-fluid">
-    <div class="row">
+<div id="topdiv" class="container-fluid">
+    <div id="topbanner" class="row">
+        <div class="col-9">
+        <h3 id="pagetitle">CoTec2020 Statistics</h3>
+        </div>
         <div class="col-3">
+        <img id="mainimg" src="https://i.imgur.com/yRJQwfy.png">
+    </div>
+    </div>
+    <div class="row">
+        <button id="user" class="btn btn-outline-light col-sm">User View</button>
+        <button id="admin" class="btn btn-outline-light col-sm">Admin View</button>
+        <button id="hosp" class="btn btn-outline-light col-sm">Hopistal center View</button>
+    </div>
+    <div class="row">
+        <div class="col-sm">
             <app-countries  id="ac"></app-countries>
         </div>
-        <div class="col-6">
+        <div class="col-sm">
             <app-statistics id="as"></app-statistics>
+        </div>
+        <div class="col-sm">
+            
         </div>
 </div>
 </div>

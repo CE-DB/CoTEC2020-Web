@@ -17,3 +17,7 @@
     color: #2bcc66;
     text-align: center;
 }
+
+#statistics {
+    position:fixed;
+}

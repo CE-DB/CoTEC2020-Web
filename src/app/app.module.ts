@@ -9,13 +9,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http"
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { CountriesComponent } from './countries/countries.component';
-import { StatisticsComponent } from './statistics/statistics.component'
+import { StatisticsComponent } from './statistics/statistics.component';
+import { DailycasesgraphComponent } from './dailycasesgraph/dailycasesgraph.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CountriesComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    DailycasesgraphComponent
   ],
   imports: [
     BrowserModule,

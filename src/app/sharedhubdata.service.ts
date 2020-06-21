@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedhubdataService {
 
-  private signalSource = new BehaviorSubject<any>({name: "global"})
+  private signalSource = new BehaviorSubject<any>({name: "Global"})
   currentSignal = this.signalSource.asObservable();
 
   constructor() { }
