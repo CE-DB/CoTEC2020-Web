@@ -1,3 +1,11 @@
+.container-fluid {
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto
+ }
+
+
 #mainimg {
     width: 48px;
     height: 48px;

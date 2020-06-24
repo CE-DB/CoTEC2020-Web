@@ -10,14 +10,36 @@ import { HttpLinkModule, HttpLink } from "apollo-angular-link-http"
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { CountriesComponent } from './countries/countries.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { DailycasesgraphComponent } from './dailycasesgraph/dailycasesgraph.component'
+import { DailycasesgraphComponent } from './dailycasesgraph/dailycasesgraph.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminregionsComponent } from './adminregions/adminregions.component';
+import { AdminpathologiesComponent } from './adminpathologies/adminpathologies.component';
+import { AdminstatesComponent } from './adminstates/adminstates.component';
+import { AdminhealthcentersComponent } from './adminhealthcenters/adminhealthcenters.component';
+import { AdminsanitarymeasuresComponent } from './adminsanitarymeasures/adminsanitarymeasures.component';
+import { AdmincontentionmeasuresComponent } from './admincontentionmeasures/admincontentionmeasures.component';
+import { AdminmedicationsComponent } from './adminmedications/adminmedications.component';
+import { HcpatientsComponent } from './hcpatients/hcpatients.component';
+import { HccontactsComponent } from './hccontacts/hccontacts.component';
+import { HcreportsComponent } from './hcreports/hcreports.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CountriesComponent,
     StatisticsComponent,
-    DailycasesgraphComponent
+    DailycasesgraphComponent,
+    DashboardComponent,
+    AdminregionsComponent,
+    AdminpathologiesComponent,
+    AdminstatesComponent,
+    AdminhealthcentersComponent,
+    AdminsanitarymeasuresComponent,
+    AdmincontentionmeasuresComponent,
+    AdminmedicationsComponent,
+    HcpatientsComponent,
+    HccontactsComponent,
+    HcreportsComponent
   ],
   imports: [
     BrowserModule,

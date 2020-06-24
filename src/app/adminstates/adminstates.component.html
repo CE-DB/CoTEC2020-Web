@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light nav-pills nav-fill">
+        <a href="admin/states" class="nav-link">States</a>
+        <a href="admin/pathologies" class="nav-link">Pathologies</a>
+        <a href="admin/regions" class="nav-link">Regions</a>
+        <a href="admin/medications" class="nav-link">Medications</a>
+        <a href="admin/sanitarymeasures" class="nav-link">Sanitary Measures</a>
+        <a href="admin/contentionmeasures" class="nav-link">Contention Measures</a>
+        <a href="admin/healthcenters" class="nav-link">Health Centers</a>
+    </nav>
+    <div class="row">
+        <div class="col-sm">
+            <h2>States</h2>
+            <hr>
+            <div class="btn-group-vertical btn-group-lg">
+                <button (click)="selectElement($event)" *ngFor="let element of elementList;" class="btn btn-secondary"
+                    id="{{element}}">
+                    {{element}}
+                </button>
+            </div>
+        </div>
+        <div class="col-sm">
+            <h2>Edit</h2>
+            <div class="row">
+                <div class="col">
+                    <label>Name = {{ currentElement }}</label>
+                    <input id="input1" placeholder="Name">
+                </div>
+                <div class="w-100">
+                    <div class="col">
+                        <button (click)="updateElement($event)" class="btn btn-primary">
+                            Update
+                        </button>
+                        <button (click)="deleteElement($event)" class="btn btn-primary">
+                            Delete
+                        </button>
+                    </div>
+                    <div class="row">
+                        <label>editResponse</label>
+                        <label>deleteResponse</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <h2>Create</h2>
+            <div class="col">
+                <input id="get1" placeholder="Name">
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+                <button (click)="addElement($event)" class="btn btn-primary">
+                    Create
+                </button>
+            </div>
+            <div class="row">
+                <label>{{addResponse}}</label>
+            </div>
+        </div>
+    </div>
+</div>

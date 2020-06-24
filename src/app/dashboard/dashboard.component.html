@@ -1,0 +1,39 @@
+<div class="row overflow-auto" id="countrylist">
+    <div class="col-sm">
+        <h2 id="listtitle">Países</h2>
+        <hr id="divider">
+        <div class="buttonwrapper" id="backdrop">
+            <div id="anotherwrapper">
+                <button (click)="countrySelected($event)" class="btn btn-outline-light"
+                    *ngFor="let country of countryList" id="{{ country.name }}">
+                    {{ country.name }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="col-sm affix">
+        <h1 id="maintitle">{{ locationName }} per case statistics</h1>
+        <div id="patientnumbers">
+            <ng-container *ngIf="locationStats; else elseBlock">
+                <h2 class="title"> Total cases</h2>
+                <p class="num">{{ locationStats.totalInfected }}</p>
+                <h2 class="title"> Active </h2>
+                <p class="num">{{ locationStats.totalActive }}</p>
+                <h2 class="title"> Recovered </h2>
+                <p class="num">{{ locationStats.totalRecovered }}</p>
+                <h2 class="title"> Deceased </h2>
+                <p class="num">{{ locationStats.totalDeceased }}</p>
+            </ng-container>
+            <ng-template #elseBlock>
+                <h2 class="title"> Total cases</h2>
+                <p class="num">0</p>
+                <h2 class="title"> Active </h2>
+                <p class="num">0</p>
+                <h2 class="title"> Recovered </h2>
+                <p class="num">0</p>
+                <h2 class="title"> Deceased </h2>
+                <p class="num">0</p>
+            </ng-template>
+        </div>
+    </div>
+</div>

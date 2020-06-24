@@ -1,0 +1,382 @@
+"""
+USER DASHBOARD
+"""
+{ 
+  globalGeneralReport {
+    totalInfected
+    totalActive
+    totalInfected
+    totalRecovered
+    dailyIncrement {
+      day
+    }
+  }
+}
+
+{ 
+  countryGeneralReport(country: "country") {
+    name
+    totalInfected
+    totalActive
+    totalInfected
+    totalRecovered
+    sanitaryMeasures {
+      measure {
+        name
+        description
+      }
+      startDate
+      endDate
+    }
+    contentionMeasures {
+      measure {
+        name
+        description
+      }
+      startDate
+      endDate
+    }
+    dailyIncrement {
+      day
+    }
+  }
+}
+
+"""
+ADMIN - REGIONS
+"""
+
+# All
+{
+  regions(country: "") {
+    name
+    country {
+      name
+    }
+  }
+}
+
+# add
+mutation {
+  addRegion(country: "", name: "") {
+    name
+  }
+}
+
+
+"""
+ADMIN - PATHOLOGIES
+"""
+
+# Patologias
+{
+  pathologies {
+    name
+    description
+    symptoms
+    treatment
+  }
+}
+
+# Patologias por pais
+{
+  pathologies(name: "pais") {
+    name
+    description
+    symptoms
+    treatment
+  }
+}
+
+"""
+ADMIN - STATES
+"""
+
+# All states
+{
+  patientStates
+}
+
+#add state
+mutation {
+  addPathology(input: {
+    name: "algo",
+    description: "opcional",
+    symptoms: [],
+    treatment: ""
+  }) {
+    name
+  }
+}
+
+#update state
+mutation {
+  updatePathology(name: "Fever", input: {
+    treatment: "Common antibiotics and rest"
+  }) {
+    name
+  }
+}
+
+#delete state
+mutation {
+    deletePathology(name: "") {
+        name
+    }
+}
+
+"""
+ADMIN - HEALTH CENTERS WIP
+"""
+
+# All
+Healthcenters(name: String, region: String, country: String): [Healthcenter!]!
+{
+  healthCenters() {
+    name
+    capacity
+    totalICUBeds
+    directorContact {
+      identification
+      firstName
+      lastName
+      email
+    }
+  }
+}
+
+# Insert hc
+addHealthCenter(input: CreateHealthCenter!): HealthCenter
+mutation {
+  addHealthCenter(input: {
+    name: "Hospital Calderon Guardia"
+    capacity: 100,
+    totalICUBeds: 23
+    directorContact: "6546345"
+    region: "San Jose"
+    country: "Costa Rica, republic of"
+  }) {
+    name
+  } 
+}
+
+#update health center
+updateHealthCenter(name: String!, region: String!, country: String!, input: UpdateHealthCenter!): HealthCenter
+
+
+#delete health center
+deleteHealthCenter(name: String!, region: String!, country: String!): HealthCenter
+
+
+"""
+ADMIN - SANITARY MEASURES WIP
+"""
+
+# all
+{
+  contentionMeasures(name: "pais") {
+    name
+    description
+  }
+}
+
+# add contention
+mutation {
+  addContentionMeasure(name:"Cierra fronterizo", description: "Se cerraran las fronteras mientras se este en alerta amarilla") {
+    name
+  }
+}
+
+"""
+ADMIN - SANITARY MEASURES
+"""
+# all or by country
+{
+  sanitaryMeasures(name: "pais") {
+    name
+    description
+  }
+}
+
+# add
+mutation {
+  addSanitaryMeasure(name: "1.8 separations", description: "Everyone should maintain distance in public spaces to avoid further spread") {
+		name
+  	description
+  }
+}
+
+#update
+updateSanitaryMeasure(oldName: String!, newName: String, description: String): SanitaryMeasure
+	
+#delete    
+deleteSanitaryMeasure(name: String!): SanitaryMeasure
+
+# attach lapse and country
+mutation {
+  addSanitaryMeasureActive(measure:"1.8 separation", startDate: "2020-03-10", endDate: "2020-12-31", country: "Costa Rica, Republic of") {
+    measure {
+      name
+      description
+    }
+    startDate
+    endDate
+    country {
+      name
+    }
+  }
+}
+
+# update
+updateSanitaryMeasureActive(measure: String!, startDate: Date!, country: String!, input: UpdateSanitaryEvent!): SanitaryMeasureEvent
+
+# delete
+deleteSanitaryMeasureActive(measure: String!, startDate: Date!, country: String!): SanitaryMeasureEvent
+
+"""
+ADMIN - MEDICATIONS
+"""
+
+# All
+{
+  medications {
+    name
+    pharmaceutical
+  }
+}
+
+# add
+mutation {
+  addMedication(name: "Acetamina",
+  pharmaceutical: "Novartis") {
+    name
+    pharmaceutical
+  }
+}
+
+# update
+updateMedication(oldName: String!, newName: String, pharmaceutical: String): Medication
+
+# delete
+deleteMedication(name: String!): Medication
+
+
+"""
+ADMIN - BULK PATIENT UPLOAD
+"""
+
+uploadFile(file: String!): Boolean
+
+
+"""
+HC - Patient Management
+"""
+# all
+{
+  patients {
+  firstName
+	lastName
+	identification
+	age
+	nationality
+	hospitalized
+	intensiveCareUnite
+	region {
+    name
+  }
+	pathologies {
+    name
+  }
+	state
+	contacts {
+    contact{
+      identification
+      firstName
+    }
+  }
+	medication {
+    name
+  }
+	dateEntrance
+  }
+}
+
+# add
+mutation {
+  addPatient(patient: {
+    firstName: ""
+    lastName: ""
+    identification: ""
+    age: 49
+    nationality: ""
+  	hospitalized: true
+    intensiveCareUnite: true
+    region: ""
+    country: ""
+    pathologies: []
+    medication: []
+    dateEntrance: ""
+    contacts: []
+    state: ""
+  }) {
+    firstName
+    nationality
+  }
+}
+
+# delete
+deletePatient:(identification: String!): Patient
+
+"""
+HC - PATIENT CONTACTS
+"""
+# all
+contacts(id: int): [Contact!]!
+
+# add
+addContact(input: CreateContact!): Contact
+mutation {
+  addContactVisit(patientId: "123454321", contactId: "6546345", visitDate: "1804-07-11") {
+  	contact {
+      firstName
+    }
+    patient {
+      firstName
+    }
+  }
+}
+
+
+# update
+updateContact:(identification: String!, input: UpdateContact!): Contact
+mutation {
+  updateContact(identification: "", input: {
+    firstName: ""
+    lastName: ""
+    identification: 0
+    age: 0
+    nationality: ""
+    address: ""
+    pathologies: [""]
+    email: ""
+    region: ""
+    country: ""
+  }) {
+    lastName
+    identification
+  }
+}
+
+# delete
+deleteContact(identification: String!): Contact
+
+
+"""
+HC - PATIENTS STATE REPORT
+"""
+patientsReport: String!
+
+"""
+HC - NEW CASES AND DEATHS REPORT
+"""
+newCasesReport: String!

@@ -3,26 +3,16 @@
 <div id="topdiv" class="container-fluid">
     <div id="topbanner" class="row">
         <div class="col-9">
-        <h3 id="pagetitle">CoTec2020 Statistics</h3>
+            <h3 id="pagetitle">CoTEC2020 Statistics</h3>
         </div>
         <div class="col-3">
-        <img id="mainimg" src="https://i.imgur.com/yRJQwfy.png">
-    </div>
-    </div>
-    <div class="row">
-        <button id="user" class="btn btn-outline-light col-sm">User View</button>
-        <button id="admin" class="btn btn-outline-light col-sm">Admin View</button>
-        <button id="hosp" class="btn btn-outline-light col-sm">Hopistal center View</button>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <app-countries  id="ac"></app-countries>
+            <img id="mainimg" src="https://i.imgur.com/yRJQwfy.png">
         </div>
-        <div class="col-sm">
-            <app-statistics id="as"></app-statistics>
-        </div>
-        <div class="col-sm">
-            
-        </div>
-</div>
+    </div>
+    <nav class="navbar navbar-light bg-light nav-pills nav-fill">
+        <a href="admin" class="nav-link nav-item">Admin</a>
+        <a href="dashboard" class="nav-link nav-item ">Dashboard</a>
+        <a href="healthcenter" class="nav-link nav-item">Health centers</a>
+    </nav>
+    <router-outlet></router-outlet>
 </div>
