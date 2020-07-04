@@ -14,8 +14,10 @@ const stateListQuery = gql`
 })
 export class AdminstatesComponent implements OnInit {
   elementList: any[];
+
   currentElement: any;
   addResponse: string;
+  editResponse: string;
   constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
@@ -39,16 +41,18 @@ export class AdminstatesComponent implements OnInit {
     try {
       console.log(document.getElementById("get1").nodeValue);
       let query = gql`
-      mutation {
-        addPatientState(name: ${document.getElementById("get1").nodeValue})
+      mutation addPatientState($state: String!){
+        addPatientState(name: $state)
       }`
       this.apollo.mutate<any>({
-        mutation: query
+        mutation: query,
+        refetchQueries: [{query: stateListQuery}],
+        variables: {state: (<HTMLInputElement>document.getElementById("get1")).value}
       }).subscribe(({data}) => {
         this.addResponse = "Added state " + data.updatePatientState;
         console.log("added state");
       }, (error) => {
-        this.addResponse = "There was the following error " + error;
+        this.addResponse = "There was the following error\n" + error;
         console.log(error);
       })
     }
@@ -60,9 +64,25 @@ export class AdminstatesComponent implements OnInit {
   updateElement(event) {
     try {
       let query = gql`
-      mutation {
-        updatePatientState(oldName: ${this.currentElement}, newName: ${document.getElementById("input1").nodeValue})
+      mutation updatePatientState($on: String!, $nn: String!) {
+        updatePatientState(oldName: $on, newName: $nn)
       }`
+
+      this.apollo.mutate<any>({
+        mutation: query,
+        refetchQueries: [{query: stateListQuery}],
+        variables: {
+          on: this.currentElement, nn: (<HTMLInputElement>document.getElementById("input1")).value        }
+      }).subscribe(({data}) => {
+        if (data.updatePatientState != null) {
+          this.editResponse = "The state was successfully updated"
+        }
+        else {
+          this.editResponse = "An error occurred, couldn't update"
+        }
+      }, (error) => {
+        this.editResponse = error;
+      })
     }
     catch(e) {
       console.log(e);
@@ -70,6 +90,24 @@ export class AdminstatesComponent implements OnInit {
   }
 
   deleteElement(event) {
+    try {
+      let query = gql`
+        mutation deletePathology($n: String!){
+          deletePatientState(name: $n)
+      }`
 
+      this.apollo.mutate<any>({
+        mutation: query,
+        refetchQueries: [{query: stateListQuery}],
+        variables: {n: this.currentElement}
+      }).subscribe(({data}) => {
+        this.editResponse = "The state " + data.deletePatientState +" was removed";
+      }, (error) => {
+        this.editResponse = error;
+      })
+    }
+    catch(e) {
+      console.log(e);
+    }
   }
 }

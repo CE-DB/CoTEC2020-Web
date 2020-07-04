@@ -30,6 +30,7 @@
     "graphql-codegen-typescript-apollo-angular": "^0.18.2",
     "graphql-codegen-typescript-common": "^0.18.2",
     "graphql-tag": "^2.10.4",
+    "js-base64": "^3.3.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -10,6 +10,7 @@ import { AdmincontentionmeasuresComponent } from './admincontentionmeasures/admi
 import { AdminhealthcentersComponent } from './adminhealthcenters/adminhealthcenters.component';
 import { HcpatientsComponent } from './hcpatients/hcpatients.component';
 import { HccontactsComponent } from './hccontacts/hccontacts.component';
+import { HcreportsComponent } from './hcreports/hcreports.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "dashboard", pathMatch: "full"},
@@ -28,7 +29,7 @@ const routes: Routes = [
     {path: "", redirectTo: "patients", pathMatch: "full"},
     {path: "patients", component: HcpatientsComponent},
     {path: "contacts", component: HccontactsComponent},
-    {path: "reports", component: HccontactsComponent}
+    {path: "reports", component: HcreportsComponent}
   ]}
 ]
 

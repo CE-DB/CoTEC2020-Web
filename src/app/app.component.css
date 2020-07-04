@@ -1,8 +1,21 @@
+* {
+    font-family: Verdana, Geneva, sans-serif;
+	font-style: normal; font-variant: normal   
+}
+
 .container-fluid {
     padding-right:0;
     padding-left:0;
     margin-right:auto;
-    margin-left:auto
+    margin-left:auto;
+ }
+
+ #topdiv {
+    --success-color: #32cd5d;
+    --create-color: #167fe9;
+    --update-color: #eead11;
+    --delete-color: #e91644;
+    --special-purple: #7a23c2;
  }
 
 

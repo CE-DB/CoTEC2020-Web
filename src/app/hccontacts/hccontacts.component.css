@@ -1,0 +1,10 @@
+#navbar-separator {
+    margin: 0;
+    border-color: var(--create-color);
+}
+
+.center-content {
+    display: block;
+    text-align: center;
+    width: 100%;
+}

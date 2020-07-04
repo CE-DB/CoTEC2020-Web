@@ -53,13 +53,17 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  countrySelected(event) {;
+  countrySelected(event) {
+    this.locationName = event.target.attributes.id.nodeValue
     this.apollo.watchQuery<any>({
       query : this.getQueryString(event.target.attributes.id.nodeValue)
     }).valueChanges.subscribe(result => {
       this.locationStats = result.data.countryGeneralReport;
-      this.locationName = this.locationStats.name;
     })
+
+    ;
+
+
   }
 
   getQueryString(country: string) {
@@ -92,6 +96,9 @@ export class DashboardComponent implements OnInit {
         }
         dailyIncrement {
           day
+          deceased
+          infected
+          active
         }
       }
     }`

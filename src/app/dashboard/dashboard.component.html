@@ -1,20 +1,26 @@
-<div class="row overflow-auto" id="countrylist">
-    <div class="col-sm">
+<div class="row">
+    <div class="col-sm pad-col">
         <h2 id="listtitle">Países</h2>
         <hr id="divider">
-        <div class="buttonwrapper" id="backdrop">
-            <div id="anotherwrapper">
-                <button (click)="countrySelected($event)" class="btn btn-outline-light"
+        <div>
+            <div>
+                <button (click)="countrySelected($event)" class="btn btn-outline-dark center-content"
                     *ngFor="let country of countryList" id="{{ country.name }}">
                     {{ country.name }}
                 </button>
             </div>
         </div>
     </div>
-    <div id="col-sm affix">
-        <h1 id="maintitle">{{ locationName }} per case statistics</h1>
+    <div id="col-sm affix" class="pad-col">
+        <ng-container *ngIf="locationName; else elseBlock">
+            <h2 id="maintitle">{{ locationName }} per case statistics</h2>
+        </ng-container>
+        <ng-template #elseBlock>
+            <h2 id="maintitle">Global per case statistics</h2>
+        </ng-template>
+        <hr>
         <div id="patientnumbers">
-            <ng-container *ngIf="locationStats; else elseBlock">
+            <ng-container *ngIf="locationStats; else elseBlock1">
                 <h2 class="title"> Total cases</h2>
                 <p class="num">{{ locationStats.totalInfected }}</p>
                 <h2 class="title"> Active </h2>
@@ -24,7 +30,7 @@
                 <h2 class="title"> Deceased </h2>
                 <p class="num">{{ locationStats.totalDeceased }}</p>
             </ng-container>
-            <ng-template #elseBlock>
+            <ng-template #elseBlock1>
                 <h2 class="title"> Total cases</h2>
                 <p class="num">0</p>
                 <h2 class="title"> Active </h2>
@@ -34,6 +40,41 @@
                 <h2 class="title"> Deceased </h2>
                 <p class="num">0</p>
             </ng-template>
+        </div>
+    </div>
+    <div class="col pad-col">
+        <h2 class="center-text">Sanitary</h2>
+        <hr>
+        <div class="pad-list" *ngFor="let element of locationStats.sanitaryMeasures;">
+            <div clas="row">
+                <button class="center-content btn btn-outline-dark"
+                    id="{{element.measure.name}}">
+                    {{element.measure.name}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col pad-col">
+        <h2 class="center-text">Contention</h2>
+        <hr>
+        <div class="pad-list" *ngFor="let element of locationStats.contentionMeasures;">
+            <div clas="row">
+                <button class="center-content btn btn-outline-dark"
+                    id="{{element.measure.name}}">
+                    {{element.measure.name}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col pad-col">
+        <h2 class="center-text">Daily Cases</h2>
+        <div class="pad-list" *ngFor="let element of locationStats.dailyIncrement;">
+            <div clas="row">
+                <button class="center-content btn btn-outline-dark"
+                    id="{{element.day}}">
+                    {{element.day}} | A:{{element.active}} I:{{element.infected}} D:{{element.deceased}}
+                </button>
+            </div>
         </div>
     </div>
 </div>

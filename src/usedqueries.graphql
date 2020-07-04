@@ -120,9 +120,7 @@ mutation {
 
 #delete state
 mutation {
-    deletePathology(name: "") {
-        name
-    }
+    deletePatientState(name: "TBH")
 }
 
 """
@@ -169,7 +167,7 @@ deleteHealthCenter(name: String!, region: String!, country: String!): HealthCent
 
 
 """
-ADMIN - SANITARY MEASURES WIP
+ADMIN - Contention MEASURES WIP
 """
 
 # all
@@ -184,6 +182,14 @@ ADMIN - SANITARY MEASURES WIP
 mutation {
   addContentionMeasure(name:"Cierra fronterizo", description: "Se cerraran las fronteras mientras se este en alerta amarilla") {
     name
+  }
+}
+
+mutation {
+  addContentionMeasureActive(country: "Costa Rica, Republic of", startDate:"2020-03-10", endDate: "2020-04-10", measure: "Cierra fronterizo") {
+    country {
+      name
+    }
   }
 }
 

@@ -1,1 +1,159 @@
-<p>adminhealthcenters works!</p>
+<hr id="navbar-separator">    
+<!-- Admin nav bar -->
+<nav class="navbar navbar-light bg-light nav-pills nav-fill">
+    <a href="admin/states" class="nav-link">States</a>
+    <a href="admin/pathologies" class="nav-link">Pathologies</a>
+    <a href="admin/regions" class="nav-link">Regions</a>
+    <a href="admin/medications" class="nav-link">Medications</a>
+    <a href="admin/sanitarymeasures" class="nav-link">Sanitary Measures</a>
+    <a href="admin/contentionmeasures" class="nav-link">Contention Measures</a>
+    <a href="admin/healthcenters" class="nav-link">Health Centers</a>
+</nav>
+<hr id="navbar-separator">    
+
+<div class="row">
+
+    <!-- Entity col -->
+    <div class="col-sm pad-col">
+        <!-- Entity name here-->
+        <h2 class="center-text" id="entitytitle">Health Centers</h2>
+        <hr>
+        <!--Set up for loop accordingly-->
+        <div class="pad-list" *ngFor="let element of elementList;">
+            <div clas="row">
+                <button (click)="selectElement($event)"  class="center-content btn btn-outline-dark"
+                    id="{{element.name}}">
+                    {{element.name}}
+                </button>
+            </div>
+        </div>
+    </div>
+        
+    <!--Edit column-->
+    
+    <div class="col-sm pad-col">
+        <h2 class="center-text" id="edittitle">Edit</h2>
+        <hr>
+        <!-- Every attribute should follow this-->
+        <div class="pad-all">
+            <div class="row">
+                <ng-container *ngIf="currentElement; else elseBlock1">
+                    <label>{{ currentElement.name || "No name selected"}}</label>
+                </ng-container>
+                <ng-template #elseBlock1>No health center selected</ng-template>
+            </div>
+            <div class="row">
+                    <input id="input1" placeholder="New name">
+            </div>
+            <div class="row">
+                <ng-container *ngIf="currentElement; else elseBlock2">
+                <label>{{ currentElement.capacity || "No capacity selected"}}</label>
+            </ng-container>
+            <ng-template #elseBlock2>No capacity selected</ng-template>
+            </div>
+            <div class="row">
+                <input id="input2" placeholder="New capacity">
+            </div>
+            <div class="row">
+                <ng-container *ngIf="currentElement; else elseBlock3">
+                <label>{{ currentElement.totalICUBeds || "No total icu beds selected"}}</label>
+                </ng-container>
+                <ng-template #elseBlock3>No total icu beds selected</ng-template>
+            </div>
+            <div class="row">
+                <input id="input3" placeholder="New totalICUBeds">
+            </div>
+            <ng-container *ngIf="currentElement">
+                <label>{{currentElement.ubication.name}}</label>
+            </ng-container>
+            <div class="row">
+                <select name="regions" id="input4">
+                    <optgroup label="Regions">
+                        <option *ngFor="let element of regionList;" value="{{element.name}}">{{element.name}}</option>
+                    </optgroup>
+                </select>
+            </div>
+            <ng-container *ngIf="currentElement">
+                <label>{{currentElement.directorContact.firstName}}</label>
+            </ng-container>
+            <div class="row">
+                <select id="input5">
+                    <optgroup label="Contacts">
+                        <option *ngFor="let element of contactList;" value="{{element.identification}}">{{element.firstName}}</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <hr>
+
+            <!-- buttons-->
+            <div class="row">   
+                <button (click)="updateElement($event)" class="center-content btn btn-outline-warning">
+                    Update
+                </button>
+            <!-- Sustitute with status returned-->
+            </div>
+            <hr>
+            <div class="row">
+                <button (click)="deleteElement($event)" class="center-content btn btn btn-outline-danger">
+                    Delete
+                </button>
+            <!-- Sustitute with status returned-->
+            </div>
+            <hr>
+            <div class="row">
+                <label>{{editResponse || "Cambios realizados se mostraran aquí"}}</label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Create col -->
+    <div class="col-sm pad-col">
+        <h2 class="center-text" id="createtitle">Create</h2>
+        <hr>
+        <div class="pad-all">
+            
+            <!-- All attributes needed to create entity here-->
+            <div class="row">
+                <input id="get1" placeholder="Name">
+            </div>
+            <div class="row">
+                <input id="get2" placeholder="Capacity">
+            </div>
+            <div class="row">
+                <input id="get3" placeholder="TotalICUBeds">
+            </div>
+            <div class="row">
+                <select name="regions" id="get4">
+                    <optgroup label="Regions">
+                        <option *ngFor="let element of regionList;" value="{{element.name}}">{{element.name}}</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="row">Select director contact</div>
+            <div class="row">
+                <select id="get5">
+                    <optgroup label="Contacts">
+                        <option *ngFor="let element of contactList;" value="{{element.identification}}">{{element.firstName}}</option>
+                    </optgroup>
+                </select>
+            </div>
+            
+
+            <hr>
+
+            <!-- Create button and response -->
+            <div class="row">
+                <button (click)="addElement($event)" class="center-content btn btn-outline-primary">
+                    Create
+                </button>
+            </div>
+            <hr>
+            <div class="row">
+                <!-- Sustitute with status returned-->
+                <label>{{addResponse || "Estado de creación se mostrará aquí"}}</label>
+            </div>
+        </div>
+    </div>
+</div>
