@@ -54,6 +54,9 @@ import { HcreportsComponent } from './hcreports/hcreports.component'
       return {
         cache: new InMemoryCache(),
         link: httpLink.create({
+          /*
+          Link graphql final deploy
+          */
           uri: "https://cotec-server.herokuapp.com/graphql",
         })
       }
