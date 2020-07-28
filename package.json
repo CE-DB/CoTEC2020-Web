@@ -7,15 +7,15 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "generate": "graphql-codegen --config codegen.yml",
-    "heroku-postbuild": "ng build --prod",
-    
+    "heroku-postbuild": "ng build --prod"  
   },
+   
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.7",
@@ -37,6 +37,7 @@
     "graphql-codegen-typescript-common": "^0.18.2",
     "graphql-tag": "^2.10.4",
     "js-base64": "^3.3.2",
+    "typescript": "~3.8.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
